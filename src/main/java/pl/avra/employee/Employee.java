@@ -2,28 +2,24 @@ package pl.avra.employee;
 
 public class Employee {
 
-    private int maximumLeaveDays;
+    private EmploymentType employmentType;
     private int alreadyTakenLeaveDays;
 
-    private Employee(int maximumLeaveDays) {
-        this.maximumLeaveDays = maximumLeaveDays;
+    private Employee(EmploymentType employmentType) {
+        this.employmentType = employmentType;
         this.alreadyTakenLeaveDays = 0;
     }
 
-    public static Employee hireEmployeeWith(int maximumLeaveDays) {
-        return new Employee(maximumLeaveDays);
+    public static Employee hireEmployeeWith(EmploymentType employmentType) {
+        return new Employee(employmentType);
     }
 
     public void takeLeaveWith(int leaveDays) {
         int increasedLeaveDays = alreadyTakenLeaveDays + leaveDays;
-        if(areRequestedDaysApplicable(increasedLeaveDays)) {
+        if(employmentType.areLeaveDaysAvaliable(increasedLeaveDays)) {
             this.alreadyTakenLeaveDays = increasedLeaveDays;
         } else {
-            throw new TooManyDaysRequestedException(leaveDays, alreadyTakenLeaveDays, maximumLeaveDays);
+            throw new TooManyDaysRequestedException(leaveDays, alreadyTakenLeaveDays, employmentType);
         }
-    }
-
-    private boolean areRequestedDaysApplicable(int increasedLeaveDays) {
-        return increasedLeaveDays <= maximumLeaveDays;
     }
 }
