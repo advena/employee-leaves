@@ -9,7 +9,7 @@ class EmployeeSpec extends Specification {
 
     def "should allow to increase leave days number"() {
         given:
-        employmentType.areLeaveDaysAvaliable(_) >> true
+        employmentType.areLeaveDaysAvailable(_) >> true
         def employee = Employee.hireEmployeeWith(employmentType)
 
         when:
@@ -21,7 +21,7 @@ class EmployeeSpec extends Specification {
 
     def "should allow to increase leave days multiple times"() {
         given:
-        employmentType.areLeaveDaysAvaliable(_) >> true
+        employmentType.areLeaveDaysAvailable(_) >> true
         def employee = Employee.hireEmployeeWith(employmentType)
 
         when:
@@ -34,8 +34,8 @@ class EmployeeSpec extends Specification {
 
     def "should not allow to increase leave days when requested days are too many"() {
         given:
-        employmentType.areLeaveDaysAvaliable(LEAVE_DAYS + 1) >> false
-        employmentType.areLeaveDaysAvaliable(LEAVE_DAYS) >> true
+        employmentType.areLeaveDaysAvailable(LEAVE_DAYS + 1) >> false
+        employmentType.areLeaveDaysAvailable(LEAVE_DAYS) >> true
 
         def employee = Employee.hireEmployeeWith(employmentType)
 

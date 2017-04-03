@@ -16,7 +16,7 @@ public class Employee {
 
     public void takeLeaveWith(int leaveDays) {
         int increasedLeaveDays = alreadyTakenLeaveDays + leaveDays;
-        if(employmentType.areLeaveDaysAvaliable(increasedLeaveDays)) {
+        if(employmentType.areLeaveDaysAvailable(increasedLeaveDays)) {
             this.alreadyTakenLeaveDays = increasedLeaveDays;
         } else {
             throw new TooManyDaysRequestedException(leaveDays, alreadyTakenLeaveDays, employmentType);
