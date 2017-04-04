@@ -10,7 +10,7 @@ public class Employee {
         this.alreadyTakenLeaveDays = 0;
     }
 
-    public static Employee hireEmployeeWith(EmploymentType employmentType) {
+    static Employee hireEmployeeWith(EmploymentType employmentType) {
         return new Employee(employmentType);
     }
 
