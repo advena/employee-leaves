@@ -5,6 +5,8 @@ public class Employee {
     private EmploymentType employmentType;
     private int alreadyTakenLeaveDays;
 
+    private EmploymentDate employmentDate;
+
     private Employee(EmploymentType employmentType) {
         this.employmentType = employmentType;
         this.alreadyTakenLeaveDays = 0;
