@@ -2,24 +2,22 @@ package pl.avra.employee;
 
 public class Employee {
 
-    private EmploymentType employmentType;
-    private int alreadyTakenLeaveDays;
+    private EmploymentLeaveData employmentLeaveData;
 
     private EmploymentDate employmentDate;
+    private EmployeeLeaveCalculator leaveCalculator;
 
-    private Employee(EmploymentType employmentType) {
-        this.employmentType = employmentType;
-        this.alreadyTakenLeaveDays = 0;
+    private Employee(EmploymentDate employmentDate) {
+        this.employmentDate = employmentDate;
     }
 
-    static Employee hireEmployeeWith(EmploymentType employmentType) {
-        return new Employee(employmentType);
+    static Employee hireEmployeeWith(EmploymentDate employmentDate) {
+        return new Employee(employmentDate);
     }
 
     public void takeLeaveWith(int leaveDays) {
-        int increasedLeaveDays = alreadyTakenLeaveDays + leaveDays;
-        if(employmentType.areLeaveDaysAvailable(increasedLeaveDays)) {
-            this.alreadyTakenLeaveDays = increasedLeaveDays;
+        if(employmentLeaveData.canTakeHoliday(leaveDays)) {
+            employmentLeaveData.increaseHolidayDays(leaveDays);
         } else {
             throw new TooManyDaysRequestedException(leaveDays, alreadyTakenLeaveDays, employmentType);
         }

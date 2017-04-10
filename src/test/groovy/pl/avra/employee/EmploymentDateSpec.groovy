@@ -17,7 +17,7 @@ class EmploymentDateSpec extends Specification {
     @Unroll
     def "should return #expectedDays days for summary experience of #years years #months months and employment date as #date"() {
         given:
-        def employmentDate = new EmploymentDate(LocalDate.parse(date), new Expirience(years, months))
+        def employmentDate = new EmployeeLeaveCalculator(LocalDate.parse(date), new Expirience(years, months))
         employmentDate.currnetDateProvider = currentDateProvider
 
         when:
